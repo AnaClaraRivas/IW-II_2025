@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio IW II</title>
+</head>
+<body>
+    <h1>Verificador de Notas</h1>
+    <ul>
+        <li>criar um programa que receba a nota de um aluno e exiba a mensagem correspondente:</li>
+        <li>Nota &gt;= 7 → "Aprovado ✅" </li>
+        <li>Nota entre 5 e 6.9 → "Recuperação ⚠️" </li>
+        <li>Nota &lt; 5 → "Reprovado ❌"</li>
+    </ul>
+    <button onclick="verificarNota()">Inserir Nota</button>
+    
+
+    <script>
+        function verificarNota() {
+            let nota = parseFloat(prompt("Digite a nota do aluno:"));
+
+            if (isNaN(nota) || nota < 0 || nota > 10) {
+            alert("Entrada inválida! ❌ Digite um número entre 0 e 10 😡");
+            return;
+            }
+
+            if (nota >= 7) {
+                alert("Aprovado ✅");
+            } else if (nota >= 5 && nota < 7) {
+                alert("Recuperação ⚠️");
+            } else {
+                alert("Reprovado ❌");
+            }
+        }
+    </script>
+    
+</body>
+</html>
