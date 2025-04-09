@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ana Clara Bronzeri Rivas</title>
+</head>
+<body>
+    <h1> MENU INTERATIVO! </h1>
+    <p>Aperte "F5" para iniciar! </p>
+    <script>
+        function exibirMenu() {
+            return prompt(
+                "===== MENU INTERATIVO =====\n" +
+                "1 - Ver mensagem\n" +
+                "2 - Calcular média de 2 notas\n" +
+                "3 - Sair\n" +
+                "Escolha uma opção:"
+            );
+        }
+
+        function calcularMedia() {
+            let nota1 = parseFloat(prompt("Digite a primeira nota (0 a 10):"));
+            let nota2 = parseFloat(prompt("Digite a segunda nota (0 a 10):"));
+
+            if (isNaN(nota1) || nota1 < 0 || nota1 > 10 ||isNaN(nota2) || nota2 < 0 || nota2 > 10) {
+                alert("Nota inválida, digite números entre 0 e 10.");
+                return;
+            }
+
+
+            let media = (nota1 + nota2) / 2;
+
+            let resultado;
+            if (media >= 7) {
+                resultado = "Aprovado";
+            } else if (media >= 5) {
+                resultado = "Recuperação";
+            } else {
+                resultado = "Reprovado";
+            }
+
+            alert("Média: " + media + "\nResultado: " + resultado);
+
+
+        }
+
+        function executarOpcao(opcao) {
+            switch (opcao) {
+                case "1":
+                    alert("Olá! Este é um menu interativo para calcular a média de duas notas.");
+                    break;
+                case "2":
+                    calcularMedia();
+                    break;
+                case "3":
+                    alert("Saindo... Até mais!");
+                    return false;
+                default:
+                    alert("Opção inválida. Tente novamente.");
+            }
+            return true;
+        }
+
+        function iniciarMenu() {
+            let continuar = true;
+            while (continuar) {
+                let opcao = exibirMenu();
+                continuar = executarOpcao(opcao);
+            }
+        }
+
+        iniciarMenu();
+    </script>
+</body>
+</html>
