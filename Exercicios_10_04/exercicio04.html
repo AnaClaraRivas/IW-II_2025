@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio - 04</title>
+</head>
+<body>
+    <script>
+        let num = prompt("Digite um número para iniciar a contagem regressiva:");
+        if (isNaN(num) || num % 1 != 0) {
+          alert("Digite um valor válido");
+        } else {
+          let resultado = "";
+          let i = num;
+          while (i >= 0) {
+            resultado += i + "\n";
+            console.log(i); 
+            i--;
+          }
+          alert(resultado);
+        }
+      </script>
+</body>
+</html>
