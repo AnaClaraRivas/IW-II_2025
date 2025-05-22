@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>EXERCÍCIOS</title>
+
+</head>
+
+<body>
+
+    <h1>Ana Clara Bronzeri Rivas    15 / 05 / 2025</h1>
+
+    <h3>1. Mostrar horário atual</h3>
+    <p id="horaTexto">Agora: <button id="botaoHora">Ver hora</button></p>
+    <script>
+        document.getElementById("botaoHora").addEventListener("click", () => {
+            const horarioAtual = new Date().toLocaleTimeString();
+            document.getElementById("horaTexto").textContent = "Agora são " + horarioAtual;
+        });
+    </script>
+
+    <h3>2. Alternar cores da página</h3>
+    <button id="botaoTema">🌙 Mudar tema</button>
+    <script>
+        document.getElementById("botaoTema").addEventListener("click", () => {
+            document.body.classList.toggle("tema-escuro");
+            const botao = document.getElementById("botaoTema");
+            botao.textContent = document.body.classList.contains("tema-escuro") ? "🌞 Voltar ao claro" : "🌙 Modo escuro";
+        });
+    </script>
+
+    <h3>3. Curtidas</h3>
+    <p id="contadorCurtidas">💜 0</p>
+    <button id="curtirAgora">Curtir</button>
+    <script>
+        let totalCurtidas = 0;
+        document.getElementById("curtirAgora").addEventListener("click", () => {
+            totalCurtidas++;
+            document.getElementById("contadorCurtidas").textContent = `💜 ${totalCurtidas}`;
+        });
+    </script>
+
+    <h3>4. Campo obrigatório</h3>
+    <input id="entradaObrigatoria" placeholder="Digite aqui">
+    <script>
+        document.getElementById("entradaObrigatoria").addEventListener("blur", (evento) => {
+            if (evento.target.value.trim() === "") {
+                alert("Campo obrigatório!");
+            }
+        });
+    </script>
+
+    <h3>5. Mostrar/Esconder texto</h3>
+    <button id="btnMostrar">Alternar visibilidade</button>
+    <p id="textoRevelar">Você encontrou esse super paragrafo secreto</p>
+    <script>
+        document.getElementById("btnMostrar").addEventListener("click", () => {
+            document.getElementById("textoRevelar").classList.toggle("ativo");
+        });
+    </script>
+
+    <h3>6. Copiar uma frase</h3>
+    <div id="mensagem">Snoopy melhor personagem de todos os tempos! Um clássico! </div>
+    <button id="botaoCopiar">Copiar mensagem</button>
+    <script>
+        document.getElementById("botaoCopiar").addEventListener("click", () => {
+            const conteudo = document.getElementById("mensagem").textContent;
+            navigator.clipboard.writeText(conteudo).then(() => {
+                alert("Copiado! Mande para seus amigos sobre o Snoopy");
+            });
+        });
+    </script>
+
+    <h3>7. Verificar tamanho do texto</h3>
+    <input id="verificadorTexto" placeholder="Pelo menos 5 letras">
+    <script>
+        document.getElementById("verificadorTexto").addEventListener("input", (e) => {
+            e.target.style.border = e.target.value.length < 5 ? "2px solid red" : "";
+        });
+    </script>
+
+    <h3>8. Quadradinhos coloridos</h3>
+    <button id="criarCores">Gerar quadradinhos</button>
+    <div id="boxCores" style="margin-top: 10px;"></div>
+
+    <script>
+        document.getElementById("criarCores").onclick = function () {
+            const container = document.getElementById("boxCores");
+            container.innerHTML = "";
+
+            for (let i = 0; i < 5; i++) {
+                let cor = "#" + Math.random().toString(16).slice(2, 8).padEnd(6, "0");
+                container.innerHTML += `<div style="
+            width: 50px; 
+            background-color: ${cor};
+            border: 1px solid #000;
+        "></div>`;
+            }
+        };
+    </script>
+
+
+    <h3>9. Pré-visualizar imagem</h3>
+    <input type="file" id="seletorImagem" accept="image/*">
+    <br><br>
+    <img id="imagemPreview" style="max-width: 250px; display: none;">
+    <script>
+        document.getElementById("seletorImagem").addEventListener("change", (evento) => {
+            const imgArquivo = evento.target.files[0];
+            if (imgArquivo && imgArquivo.type.startsWith("image/")) {
+                const leitor = new FileReader();
+                leitor.onload = function (e) {
+                    const imagem = document.getElementById("imagemPreview");
+                    imagem.src = e.target.result;
+                    imagem.style.display = "block";
+                };
+                leitor.readAsDataURL(imgArquivo);
+            } else {
+                alert("Escolha uma imagem válida.");
+            }
+        });
+    </script>
+
+    <h3>10. Reorganizar lista</h3>
+    <ul id="itensLista">
+        <li>4 <button class="btnMover subir">↑</button> <button class="btnMover descer">↓</button></li>
+        <li>2 <button class="btnMover subir">↑</button> <button class="btnMover descer">↓</button></li>
+        <li>3 <button class="btnMover subir">↑</button> <button class="btnMover descer">↓</button></li>
+        <li>1 <button class="btnMover subir">↑</button> <button class="btnMover descer">↓</button></li>
+    </ul>
+    <script>
+        document.querySelectorAll(".btnMover").forEach(botao => {
+            botao.addEventListener("click", () => {
+                const item = botao.parentElement;
+                const lista = item.parentElement;
+                if (botao.classList.contains("subir") && item.previousElementSibling) {
+                    lista.insertBefore(item, item.previousElementSibling);
+                }
+                if (botao.classList.contains("descer") && item.nextElementSibling) {
+                    lista.insertBefore(item.nextElementSibling, item);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

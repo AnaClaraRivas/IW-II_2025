@@ -1,0 +1,79 @@
+
+body {
+    background: #c8a2c8;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.tema-escuro {
+    background-color: #440064;
+    color: #eee;
+}
+
+button {
+    margin: 10px;
+    padding: 8px 16px;
+    background: #8a5ca3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #7a4f7a;
+    border-radius: 4px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#boxCores div {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #5a3e5a;
+}
+
+ul#itensLista {
+    list-style: none;
+    padding-left: 0;
+    max-width: 250px;
+    margin: 20px auto 0;
+    text-align: left;
+}
+
+ul#itensLista li {
+    background: #b28cc6;
+    margin: 6px 0;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnMover {
+    background: #7a4f7a;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+#textoRevelar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    margin-top: 10px;
+}
+
+#textoRevelar.ativo {
+    max-height: 100px;
+}
